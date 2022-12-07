@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewBag.title = "Book List";
+}
+
+
+<div class="card-deck">
+    @foreach (var book in Model)
+    {
+        var photopath = "/Images/" + (book.PhotoPath ?? "noimage.png");
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <img class="card-img-top iamgethumbnail" src="@photopath" alt="Card image cap" style=" height: 15rem; width: 15rem">
+            <div class="card-body">
+                <h5 class="card-title">@book.Title</h5>
+                @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+                <a asp-controller="Home" asp-action="details" asp-route-id="@book.Id" class="btn btn-primary m-1">View</a>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@book.Id" class="btn btn-primary m-1">Edit</a>
+                <a asp-controller="Home" asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger m-1" onclick="return confirm('Are you sure you want to delete')">Delete</a>
+            </div>
+        </div>
+
+    }
+</div>

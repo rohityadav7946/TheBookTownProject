@@ -1,0 +1,33 @@
+﻿
+<header class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1 class="hero-title">The BookTown</h1>
+            <h4 class="hero-subheading">Read, learn, discover.</h4>
+        </div>
+    </div>
+</header>
+
+<br />
+
+@model IEnumerable<Book>
+    
+
+    <div class="card-deck">
+        @foreach (var book in Model)
+        {
+            var photopath = "/Images/" + (book.PhotoPath ?? "noimage.png");
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+                <img class="card-img-top iamgethumbnail" src="@photopath" alt="Card image cap" style=" height: 15rem; width: 15rem">
+                <div class="card-body">
+                    <h5 class="card-title">@book.Title</h5>
+                    
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+
+
